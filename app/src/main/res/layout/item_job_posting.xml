@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="company"
+            type="com.taein.jobplanettest.data.entity.Company" />
+        <variable
+            name="listener"
+            type="com.taein.jobplanettest.companyList.CellTypeItemUserActionListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:onClick="@{() -> listener.onCellTypeItemClicked(company.company_id)}"
+        >
+
+        <!--current_tracking_status 수평 가이드 라인-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_horizontal_gl"
+            app:layout_constraintGuide_percent="0.06"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottom_horizontal_gl"
+            app:layout_constraintGuide_percent="0.94"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <!--parcel_detail_activity 왼쪽 수직 가이드 라인-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_vertical_gl"
+            app:layout_constraintGuide_percent="0.016"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!--parcel_detail_activity 오른쪽 수직 가이드 라인-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_vertical_gl"
+            app:layout_constraintGuide_percent="0.984"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/logo_iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            bind:src="@{company.logo}"
+            app:layout_constraintLeft_toRightOf="@+id/left_vertical_gl"
+            app:layout_constraintTop_toBottomOf="@+id/top_horizontal_gl"
+        />
+<!--            android:src="@drawable/ic_launcher_background"-->
+
+        <TextView
+            android:id="@+id/company_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="@{company.company_name}"
+            android:textStyle="bold"
+            android:textColor="@color/company_name_tv_gray"
+            app:layout_constraintTop_toBottomOf="@+id/top_horizontal_gl"
+            app:layout_constraintLeft_toRightOf="@+id/logo_iv"
+            app:layout_constraintRight_toLeftOf="@+id/right_vertical_gl"
+            app:layout_constraintHorizontal_bias="0.15" />
+<!--            android:text="오리지널 컴파니"-->
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="@{company.title}"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/company_name_tv"
+            app:layout_constraintStart_toStartOf="@+id/company_name_tv" />
+<!--            android:text="법무팀"-->
+
+        <TextView
+            android:id="@+id/message_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="@{company.deadline.message}"
+            android:textColor="@color/message_tv_gray"
+            app:layout_constraintTop_toBottomOf="@+id/title_tv"
+            app:layout_constraintStart_toStartOf="@+id/company_name_tv"
+            app:layout_constraintStart_toEndOf="@+id/title_tv" />
+<!--            android:text="마감"-->
+
+        <TextView
+            android:id="@+id/review_avg_cache_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            bind:rate_total_avg="@{company.review_avg_cache}"
+            app:layout_constraintStart_toStartOf="@+id/logo_iv"
+            app:layout_constraintTop_toBottomOf="@+id/message_tv"/>
+<!--            android:text="3.34"-->
+
+        <TextView
+            android:id="@+id/posting_type_holder_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/posting_type_holder_tv"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/message_tv"
+            app:layout_constraintTop_toBottomOf="@+id/message_tv"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_horizontal_gl"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

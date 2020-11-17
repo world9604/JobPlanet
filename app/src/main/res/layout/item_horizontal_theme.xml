@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="listener"
+            type="com.taein.jobplanettest.companyList.CellTypeItemUserActionListener" />
+        <variable
+            name="theme"
+            type="com.taein.jobplanettest.data.entity.Theme" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/horizontal_theme_layout_width"
+        android:layout_height="@dimen/horizontal_theme_layout_height"
+        android:background="@color/white"
+        android:onClick="@{() -> listener.onCellTypeItemClicked(theme.id)}"
+        >
+
+        <!--current_tracking_status 수평 가이드 라인-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_horizontal_gl"
+            app:layout_constraintGuide_percent="0.0"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottom_horizontal_gl"
+            app:layout_constraintGuide_percent="1.0"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!--parcel_detail_activity 왼쪽 수직 가이드 라인-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_vertical_gl"
+            app:layout_constraintGuide_percent="0.1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!--parcel_detail_activity 오른쪽 수직 가이드 라인-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_vertical_gl"
+            app:layout_constraintGuide_percent="0.9"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+       <ImageView
+           android:id="@+id/cover_image_iv"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           bind:src="@{theme.cover_image}"
+           app:layout_constraintLeft_toLeftOf="parent"
+           app:layout_constraintRight_toRightOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/top_horizontal_gl"
+           />
+<!--           android:src="@drawable/ic_launcher_background"-->
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:text="@{theme.title}"
+            app:layout_constraintStart_toEndOf="@+id/left_vertical_gl"
+            app:layout_constraintEnd_toStartOf="@+id/right_vertical_gl"
+            app:layout_constraintTop_toBottomOf="@+id/cover_image_iv"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_horizontal_gl"
+        />
+        <!--        android:text="개발이 적성이라면"-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

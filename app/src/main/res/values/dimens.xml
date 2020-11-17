@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="recyclerviw_item_bottom_interval">30dp</dimen>
+    <dimen name="more_salary_information_tv_right_margin">10dp</dimen>
+    <dimen name="horizontal_theme_width">150dp</dimen>
+    <dimen name="main_sub_horizontal_margin_top">15dp</dimen>
+    <dimen name="pros_holder_text_size">15sp</dimen>
+    <dimen name="pros_tv_text_size">15sp</dimen>
+    <dimen name="cons_holder_tv_text_size">15sp</dimen>
+    <dimen name="cons_tv_text_size">15sp</dimen>
+    <dimen name="pros_holder_tv_margin_top">20dp</dimen>
+    <dimen name="more_salary_information_tv_margin_top">10dp</dimen>
+    <dimen name="title_tv_margin_top">10dp</dimen>
+    <dimen name="horizontal_theme_layout_width">150dp</dimen>
+    <dimen name="horizontal_theme_layout_height">200dp</dimen>
+    <dimen name="toolbar_et_drawable_padding">3dp</dimen>
+    <dimen name="notification_iv_margin_start">50dp</dimen>
+    <dimen name="person_iv_margin_start">20dp</dimen>
+    <dimen name="person_iv_margin_end">10dp</dimen>
+</resources>

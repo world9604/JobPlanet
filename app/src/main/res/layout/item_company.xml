@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="company"
+            type="com.taein.jobplanettest.data.entity.Company" />
+        <variable
+            name="listener"
+            type="com.taein.jobplanettest.companyList.CellTypeItemUserActionListener" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:onClick="@{() -> listener.onCellTypeItemClicked(company.company_id)}"
+        >
+
+        <!--current_tracking_status 수평 가이드 라인-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_horizontal_gl"
+            app:layout_constraintGuide_percent="0.06"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottom_horizontal_gl"
+            app:layout_constraintGuide_percent="0.94"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!--parcel_detail_activity 왼쪽 수직 가이드 라인-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_vertical_gl"
+            app:layout_constraintGuide_percent="0.016"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!--parcel_detail_activity 오른쪽 수직 가이드 라인-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_vertical_gl"
+            app:layout_constraintGuide_percent="0.984"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <include
+            android:id="@+id/item_companay_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:company="@{company}"
+            layout="@layout/item_company_title"
+            />
+
+        <TextView
+            android:id="@+id/review_summary_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            android:text="@{company.review_summary}"
+            app:layout_constraintTop_toBottomOf="@+id/item_companay_title"
+            app:layout_constraintStart_toEndOf="@+id/left_vertical_gl"
+            app:layout_constraintEnd_toStartOf="@+id/right_vertical_gl"
+            />
+
+        <TextView
+            android:id="@+id/avg_salary_holder_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="평균연봉"
+            android:textSize="15sp"
+            android:textColor="@color/avg_salray_holder_tv_green"
+            app:layout_constraintStart_toEndOf="@+id/left_vertical_gl"
+            app:layout_constraintBaseline_toBaselineOf="@+id/salary_avg_tv"
+            app:layout_constraintTop_toBottomOf="@+id/review_summary_tv"
+            />
+
+        <TextView
+            android:id="@+id/salary_avg_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{company.salary_avg}"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toEndOf="@+id/avg_salary_holder_tv"
+            app:layout_constraintTop_toBottomOf="@+id/review_summary_tv"
+            />
+
+        <TextView
+            android:id="@+id/interview_question_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="@{company.interview_question}"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toEndOf="@+id/left_vertical_gl"
+            app:layout_constraintEnd_toStartOf="@+id/right_vertical_gl"
+            app:layout_constraintTop_toBottomOf="@+id/salary_avg_tv"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_horizontal_gl"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
